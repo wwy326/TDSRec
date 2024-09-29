@@ -1,0 +1,41 @@
+optimizer:
+  name: adam
+  lr: 1.0e-3
+  weight_decay: 0
+
+train:
+  epoch: 200
+  batch_size: 512
+  save_model: true
+  log_loss: false
+  test_step: 1
+  reproducible: true
+  seed: 2023
+
+test:
+  metrics: [recall, ndcg]
+  k: [5, 10, 20]
+  batch_size: 512
+
+data:
+  type: sequential
+  name: cd
+  seq_aug: true
+
+model:
+  name: our
+  dropout_rate: 0.1
+  n_layers: 2
+  embedding_size: 64
+  n_heads: 2
+  max_seq_len: 50
+  lmd: 0.1
+  deca_factor: 0.5
+  tau: 1
+
+tune:
+  enable: false
+  hyperparameters: [dropout_rate, lmb, tau]
+  dropout_rate: 0.3  # [0.1, 0.3, 0.5] # Use a list to store the search range
+  lmb: 0.1  # [0.05, 0.1, 0.2]
+  tau: 0.7  # [0.5, 0.7, 0.9]
