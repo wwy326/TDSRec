@@ -1,5 +1,5 @@
 # TDSRec
-SSLRec is implemented under the following development environment:
+TDSRec is implemented under the following development environment:
 
 + python==3.10.4
 + numpy==1.22.3
